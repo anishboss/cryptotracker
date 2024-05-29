@@ -6,3 +6,9 @@ export interface ICoin extends Document {
   marketCapital: string;
   highValue24h: string;
 }
+
+export interface IWatchlist extends Document {
+  code: string;
+  minPrice: number;
+  maxPrice: number;
+}
