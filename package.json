@@ -1,0 +1,28 @@
+{
+  "name": "cryptotracker",
+  "version": "1.0.0",
+  "description": "This app tracks the current crypto price and sends notification to user if it exceeds the threshold price",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts"
+  },
+  "keywords": [
+    "cryptotracker",
+    "cryptocurrency"
+  ],
+  "author": "Anish Budhathoki",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "nodemon": "^3.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
