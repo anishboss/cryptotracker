@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use("/", routes);
+app.use("/api", routes);
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(__dirname + "/public/index.html");
 });

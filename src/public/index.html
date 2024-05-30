@@ -37,7 +37,7 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
-      const baseURL = "http://localhost:8000";
+      const baseURL = "http://localhost:8000/api";
 
       socket.on("notification", function (msg) {
         var div = document.createElement("div");
