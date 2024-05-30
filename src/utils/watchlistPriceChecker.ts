@@ -24,16 +24,13 @@ function logNotification(
       2
     )}% in 24hrs to $${price}`;
 
-    // console.log("message", message);
-    sendNotification(message);
-
     priceLogger.info(message);
+    sendNotification(message);
   } else if (price > maxPrice) {
     percentage = changeInPricePercentage(price, maxPrice);
     message = `${code} is on move, The Price is up ${percentage.toFixed(
       2
     )}% in 24hrs to $${price}`;
-    // console.log("message", message);
 
     priceLogger.info(message);
     sendNotification(message);
@@ -52,7 +49,7 @@ export const watchListPriceChecker = async () => {
       const coinIndex = coins.findIndex((coin) => coin.code === watchList.code);
       if (coinIndex > -1) {
         const { price, code } = coins[coinIndex];
-        console.log("price", price, watchList.minPrice, watchList.maxPrice);
+        // console.log("price", price, watchList.minPrice, watchList.maxPrice);
         logNotification(code, price, watchList.minPrice, watchList.maxPrice);
       }
     }
