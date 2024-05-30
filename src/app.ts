@@ -1,14 +1,11 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
+dotenv.config();
 import cors from "cors";
 
-import connectDB from "./config/connectDB";
 import routes from "./routes";
 
-dotenv.config();
-
 const app: Express = express();
-const port = process.env.PORT || 3000;
 
 app.use(express.json({ limit: "100mb" }));
 
@@ -26,10 +23,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use("/", routes);
 app.get("/", (req: Request, res: Response) => {
-  res.send("welcome to cryptotracker ");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
-  connectDB();
-});
+export default app;

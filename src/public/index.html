@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Track</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+      .coin-container {
+        height: 200px;
+        /* background: brown; */
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Crypto Tracking app</h1>
+    <div class="container">
+      <div class="coin-container">
+        <h2>Coins</h2>
+        <ol id="coin-list"></ol>
+      </div>
+      <div>
+        <h1>WatchLists</h1>
+        <ol id="watch-list-coin"></ol>
+      </div>
+    </div>
+
+    <div id="notifications"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const baseURL = "http://localhost:8000";
+
+      socket.on("notification", function (msg) {
+        var div = document.createElement("div");
+        div.textContent = msg;
+        document.getElementById("notifications").appendChild(div);
+      });
+      let coins = [];
+      async function fetchCoins() {
+        fetch(`${baseURL}/coins`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const coinList = document.getElementById("coin-list");
+            data.forEach((coin) => {
+              const listItem = document.createElement("li");
+              listItem.textContent = `${coin.name} - ${coin.code} - ${coin.price}`;
+              coinList.appendChild(listItem);
+            });
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with your fetch operation:",
+              error
+            );
+          });
+      }
+
+      async function fetchWatchLitsCoins() {
+        fetch(`${baseURL}/watchlists`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const coinList = document.getElementById("watch-list-coin");
+            data.forEach((coin) => {
+              const listItem = document.createElement("li");
+              listItem.textContent = `${coin.code} - ${coin.minPrice} - ${coin.maxPrice}`;
+              coinList.appendChild(listItem);
+            });
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with your fetch operation",
+              error
+            );
+          });
+      }
+
+      fetchCoins();
+      fetchWatchLitsCoins();
+    </script>
+  </body>
+</html>

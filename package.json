@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/server.ts"
   },
   "keywords": [
     "cryptotracker",
@@ -15,11 +15,17 @@
   "author": "Anish Budhathoki",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.7.2",
+    "corn": "^0.0.1",
     "cors": "^2.8.5",
+    "cron": "^3.1.7",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsdom": "^24.1.0",
     "mongoose": "^8.4.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "socket.io": "^4.7.5",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
