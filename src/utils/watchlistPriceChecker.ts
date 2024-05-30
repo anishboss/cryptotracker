@@ -24,7 +24,7 @@ function logNotification(
       2
     )}% in 24hrs to $${price}`;
 
-    console.log("message", message);
+    // console.log("message", message);
     sendNotification(message);
 
     priceLogger.info(message);
@@ -33,7 +33,7 @@ function logNotification(
     message = `${code} is on move, The Price is up ${percentage.toFixed(
       2
     )}% in 24hrs to $${price}`;
-    console.log("message", message);
+    // console.log("message", message);
 
     priceLogger.info(message);
     sendNotification(message);

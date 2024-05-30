@@ -30,11 +30,7 @@ async function extractCoinData(): Promise<ICoin[]> {
       .textContent.replace("$", "")
       .trim();
     let coin: ICoin = { name, code, price, image, marketCapital } as ICoin;
-    // console.log(name, code, price, image, marketCapital);
-    if (!isNaN(price)) {
-      //   coins.push({ name, code, price, image, marketCapital });
-      coins.push(coin);
-    }
+    coins.push(coin);
   });
   console.log("extracted coinsData");
   return coins;
