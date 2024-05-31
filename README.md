@@ -43,5 +43,7 @@ npm run start
   GET   | /api/coins
   GET   | /api/watchlists
   POST  | /api/watchlists
+  # Request payload
+■ Eg: {code: BTC, min_price: 35000 , max_price: 60000 }
 +--------+-------------------------+
 ```
