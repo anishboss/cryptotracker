@@ -32,7 +32,6 @@ async function extractCoinData(): Promise<ICoin[]> {
     const highValue24h: ICoin["highValue24h"] = row
       .querySelector(".change")
       .textContent.trim();
-    console.log("highValue 24h", highValue24h);
     let coin: ICoin = {
       name,
       code,

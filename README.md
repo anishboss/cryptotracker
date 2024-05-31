@@ -21,6 +21,8 @@ cd cryptotracker;
 # Note: You can review the list of dependencies from the below link.
 npm install;
 
+#Create .env file in root folder as .env.sample
+
 # Run the app without compiling ts files
 npm run dev;
 # Run the bulid
