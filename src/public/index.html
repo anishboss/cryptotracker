@@ -25,7 +25,11 @@
     <div class="container">
       <div class="coin-container">
         <h2>Coins</h2>
-        <ol id="coin-list"></ol>
+        <ol id="coin-list">
+          Sn. Name Code Price MarketCapital 24h
+          <br />
+          <br />
+        </ol>
       </div>
       <div>
         <h1>WatchLists</h1>
@@ -33,7 +37,7 @@
       </div>
     </div>
 
-    <div id="notifications"></div>
+    <div id="notifications"><h2>Notifications:</h2></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
@@ -57,7 +61,7 @@
             const coinList = document.getElementById("coin-list");
             data.forEach((coin) => {
               const listItem = document.createElement("li");
-              listItem.textContent = `${coin.name} - ${coin.code} - ${coin.price}`;
+              listItem.textContent = `${coin.name} | ${coin.code} | ${coin.price} | ${coin.marketCapital} | ${coin.highValue24h} `;
               coinList.appendChild(listItem);
             });
           })

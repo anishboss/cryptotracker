@@ -4,7 +4,7 @@ export interface ICoin extends Document {
   image: string;
   price: number;
   marketCapital: string;
-  // highValue24h?: string;
+  highValue24h: string;
 }
 
 export interface IWatchlist extends Document {

@@ -29,7 +29,18 @@ async function extractCoinData(): Promise<ICoin[]> {
       .querySelectorAll(".valuta")[1]
       .textContent.replace("$", "")
       .trim();
-    let coin: ICoin = { name, code, price, image, marketCapital } as ICoin;
+    const highValue24h: ICoin["highValue24h"] = row
+      .querySelector(".change")
+      .textContent.trim();
+    console.log("highValue 24h", highValue24h);
+    let coin: ICoin = {
+      name,
+      code,
+      price,
+      image,
+      marketCapital,
+      highValue24h,
+    } as ICoin;
     coins.push(coin);
   });
   console.log("extracted coinsData");

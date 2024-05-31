@@ -4,7 +4,7 @@ import { watchListPriceChecker } from "./watchlistPriceChecker";
 
 export const runCronJob = () => {
   const job = CronJob.from({
-    cronTime: "1 * * * *",
+    cronTime: "0/1 * * * *",
     onTick: function () {
       console.log("You will see this every minute");
       watchListPriceChecker();
@@ -13,7 +13,7 @@ export const runCronJob = () => {
   });
 
   const scrapData = CronJob.from({
-    cronTime: "5 * * * *",
+    cronTime: "0/5 * * * *",
     onTick: function () {
       console.log("scrap data and save to db");
       scrapDataAndSaveToDB();

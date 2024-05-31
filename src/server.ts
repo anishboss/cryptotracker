@@ -4,6 +4,7 @@ import app from "./app";
 import connectDB from "./config/connectDB";
 import { runCronJob } from "./utils/cornJobs";
 import { watchListPriceChecker } from "./utils/watchlistPriceChecker";
+import { scrapDataAndSaveToDB } from "./utils/scrapData";
 
 const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
@@ -25,6 +26,7 @@ io.on("connection", (socket) => {
 });
 
 //   Start the server
+scrapDataAndSaveToDB();
 server.listen(PORT, () => {
   console.log(`[server]: Server is running at http://localhost:${PORT}`);
   connectDB();
